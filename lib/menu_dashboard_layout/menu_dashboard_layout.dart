@@ -50,6 +50,14 @@ class _MenuDashboardLayoutState extends State<MenuDashboardLayout> with SingleTi
     });
   }
 
+  void onMenuItemClicked() {
+    setState(() {
+      _controller.reverse();
+    });
+
+    isCollapsed = !isCollapsed;
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery
@@ -70,6 +78,7 @@ class _MenuDashboardLayoutState extends State<MenuDashboardLayout> with SingleTi
                   slideAnimation: _slideAnimation,
                   menuAnimation: _menuScaleAnimation,
                   selectedIndex: findSelectedIndex(navigationState),
+                  onMenuItemClicked: onMenuItemClicked
                 );
               },
             ),

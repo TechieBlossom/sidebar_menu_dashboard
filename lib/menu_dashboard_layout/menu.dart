@@ -6,8 +6,9 @@ class Menu extends StatelessWidget {
   final Animation<Offset> slideAnimation;
   final Animation<double> menuAnimation;
   final int selectedIndex;
+  final Function onMenuItemClicked;
 
-  const Menu({Key key, this.slideAnimation, this.menuAnimation, this.selectedIndex}) : super(key: key);
+  const Menu({Key key, this.slideAnimation, this.menuAnimation, this.selectedIndex, @required this.onMenuItemClicked}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +28,7 @@ class Menu extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.DashboardClickedEvent);
+                    onMenuItemClicked();
                   },
                   child: Text(
                     "Dashboard",
@@ -41,6 +43,7 @@ class Menu extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.MessagesClickedEvent);
+                    onMenuItemClicked();
                   },
                   child: Text(
                     "Messages",
@@ -55,6 +58,7 @@ class Menu extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.UtilityClickedEvent);
+                    onMenuItemClicked();
                   },
                   child: Text(
                     "Utility Bills",
