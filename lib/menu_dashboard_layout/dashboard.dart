@@ -32,7 +32,7 @@ class Dashboard extends StatelessWidget {
         scale: scaleAnimation,
         child: Material(
           animationDuration: duration,
-          borderRadius: BorderRadius.all(Radius.circular(40)),
+          borderRadius: isCollapsed ? BorderRadius.circular(0) : BorderRadius.circular(40),
           elevation: 8,
           child: child,
         ),
